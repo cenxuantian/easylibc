@@ -13,6 +13,12 @@ void array_quick_sort(void* target, int ele_size, int ele_count,sort_comp_func* 
 // private
 void __array_quick_sort(void* target, int ele_size,sort_comp_func* compare,int start,int stop);
 
+void array_transform(void* target, int ele_size, int ele_count, void(*func)(void*));
+
+void $tolower(void* ch);
+
+void $toupper(void* ch);
+
 _extern_c_end_
 
 #endif

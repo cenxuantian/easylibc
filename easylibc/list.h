@@ -10,19 +10,21 @@ _extern_c_beg_ \
 typedef struct $__listnode_##_typename_{\
     _typename_* data;\
     struct $__listnode_##_typename_* next;\
-} $listnode_##_typename_;\
+} $listnode_##_typename_,*$plistnode_##_typename_;\
 \
 typedef struct $__list_##_typename_{\
     int size;\
     $listnode_##_typename_ *root;\
     _typename_* temp;\
-} $list_##_typename_; \
+} $list_##_typename_,*$plist_##_typename_; \
 _extern_c_end_
 
 $declare_$list(void)
 
 #define $list(_typename_) $list_##_typename_
 #define $listnode(_typename_) $listnode_##_typename_
+#define $plist(_typename_) $plist_##_typename_
+#define $plistnode(_typename_) $plistnode_##_typename_
 
 void* list_new();
 void list_del(void* _plist);

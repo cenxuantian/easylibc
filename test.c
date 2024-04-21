@@ -6,21 +6,16 @@
 #include <pair.h>
 #include <list.h>
 #include <stack.h>
+#include <trie.h>
 
 $declare_$stack(double)
 
-
 int main(int argc, char** argv){
-    $stack(double)* stack = stack_new();
+    $trie* trie = trie_new();
+    trie_push(trie,"hello");
+    trie_push(trie,"heyyy");
+    printf("%d\n",trie_search(trie,"he"));
 
-    stack_push_rv(stack,10.5);
-    printf("%lf\n",stack_top(stack));
-    stack_push_rv(stack,20.5);
-    printf("%lf\n",stack_top(stack));
-    stack_pop(stack);
-    printf("%lf\n",stack_top(stack));
-
-    stack_del(stack);
 }
 
 

@@ -50,6 +50,27 @@ void array_quick_sort(void* target, int ele_size, int ele_count,sort_comp_func* 
     return;
 }
 
+
+void array_transform(void* target, int ele_size, int ele_count, void(*func)(void*)){
+    for(int i=0;i< ele_count;i++){
+        func(target);
+        target+=ele_size;
+    }
+}
+static int __lower_upper_diff = 'A'-'a';
+
+
+void $tolower(void* ch){
+    if($deref(char,ch) <= 'Z' && $deref(char,ch) >='A'){
+        $deref(char,ch) -= __lower_upper_diff;
+    }
+}
+void $toupper(void* ch){
+    if($deref(char,ch) <= 'z' && $deref(char,ch) >='a'){
+        $deref(char,ch) += __lower_upper_diff;
+    }
+}
+
 _extern_c_end_
 
 #endif

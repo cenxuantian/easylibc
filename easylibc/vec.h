@@ -11,12 +11,14 @@ typedef struct $__vec_##_typename_{\
     _typename_* data;\
     int size;\
     int capacity;\
-} $vec_##_typename_; \
+} $vec_##_typename_, *$pvec_##_typename_; \
 _extern_c_end_
 
 $declare_$vec(void)
 
 #define $vec(_typename_) $vec_##_typename_
+#define $pvec(_typename_) $pvec_##_typename_
+
 void* vec_new(int reserve);
 void vec_del(void* _pvec);
 void* vec_copy(const void* _pvec);
@@ -30,6 +32,8 @@ void* vec_copy(const void* _pvec);
 #define vec_sort(_pvec)                 array_quick_sort(_pvec->data,sizeof(*(_pvec->data)),_pvec->size,memcmp)
 #define vec_reverse(_pvec)              for(int i=0; i <= _pvec->size/2;i++) {$swap(&$vec_at(_pvec,i),&$vec_at(_pvec,_pvec->size-1-i),sizeof(*(_pvec->data)));}(void)0
 #define vec_eq(_pvec1,_pvec2)           (_pvec1->size!=_pvec2->size? false:(memcmp(_pvec1->data,_pvec2->data,_pvec1->size)==0))
+
+
 
 // private
 #define __vec_next_capacity(_pvec) (_pvec->capacity *2+1)
